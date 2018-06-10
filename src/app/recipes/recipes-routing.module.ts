@@ -8,36 +8,34 @@ import { RecipeEditComponent } from './../recipes/recipe-edit/recipe-edit.compon
 import { AuthGuard } from '../auth/auth-guard.service';
 
 const recipesRoutes: Routes = [
-    {
-        path: 'recipes',
-        component: RecipesComponent,
-        children: [
-            {
-                path: '',
-                component: RecipeStartComponent
-            },
-            {
-                path: 'new',
-                component: RecipeEditComponent,
-                canActivate: [AuthGuard]
-            },
-            {
-                path: ':id',
-                component: RecipeDetailComponent
-            },
-            {
-                path: ':id/edit',
-                component: RecipeEditComponent,
-                canActivate: [AuthGuard]
-            }
-        ]
-    },
-]
+	{
+		path: '',
+		component: RecipesComponent,
+		children: [
+			{
+				path: '',
+				component: RecipeStartComponent
+			},
+			{
+				path: 'new',
+				component: RecipeEditComponent,
+				canActivate: [ AuthGuard ]
+			},
+			{
+				path: ':id',
+				component: RecipeDetailComponent
+			},
+			{
+				path: ':id/edit',
+				component: RecipeEditComponent,
+				canActivate: [ AuthGuard ]
+			}
+		]
+	}
+];
 
 @NgModule({
-    imports: [
-        RouterModule.forChild(recipesRoutes)
-    ],
-    exports: [RouterModule]
+	imports: [ RouterModule.forChild(recipesRoutes) ],
+	exports: [ RouterModule ]
 })
-export class RecipesRoutingModule{}
+export class RecipesRoutingModule {}

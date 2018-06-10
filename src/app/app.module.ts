@@ -14,22 +14,19 @@ import { RecipesModule } from './recipes/recipes.module';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    AppRoutingModule,
-    RecipesModule,
-    ShoppingListModule,
-    SharedModule,
-    AuthModule
-  ],
-  providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
-  bootstrap: [AppComponent]
+	declarations: [ AppComponent, HeaderComponent, HomeComponent ],
+	imports: [
+		BrowserModule,
+		HttpModule,
+		AppRoutingModule,
+		ShoppingListModule,
+		SharedModule,
+		AuthModule
+	],
+	providers: [ ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard ],
+	bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}
