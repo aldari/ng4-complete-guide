@@ -1,7 +1,7 @@
 import { AuthService } from './../auth/auth.service';
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
 
 import { RecipeService } from './../recipes/recipe.service';
 import { Recipe } from './../recipes/recipe.model';
@@ -22,7 +22,8 @@ export class DataStorageService {
         const token = this.authService.getToken();
 
         this.http.get('https://ng-http-65ff1.firebaseio.com//recipes.json?auth=' + token)
-            .map(
+            .pipe(
+			map(
                 (response: Response) => {
                     const recipes: Recipe[] = response.json();
                     for (const recipe of recipes) {
@@ -32,7 +33,7 @@ export class DataStorageService {
                     }
                     return recipes;
                 }
-            )
+            ))
             .subscribe(
                 (recipes: Recipe[]) => {
                     this.recipeService.setRecipes(recipes);
